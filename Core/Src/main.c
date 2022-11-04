@@ -119,7 +119,7 @@ static void MX_I2C2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint8_t MSG[16] = {'\0'};
+char MSG[16] = {'\0'};
 
 void RSSI_Display(void) {
 
@@ -128,24 +128,14 @@ void RSSI_Display(void) {
   HAL_Delay(4);
   //APP_TPRINTF("RSSIDisp3\r\n");
 
-  sprintf(MSG, "RSSI: %d",RSSI);
+  sprintf(MSG, "RSSI: %d ",RSSI);
   lcd_send_string(MSG);
-  HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
+  //HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
   //APP_TPRINTF("RSSIDisp4\r\n");
   HAL_Delay(2);
 }
 
 
-/*
-void HAL_IncTick(void) {
-	uwTick += (uint32_t)uwTickFreq;
-	APP_TPRINTF("HAL_IncTick\r\n");
-	if (( uwTick % 2000) == 0) {
-		UTIL_SEQ_SetTask((1 << CFG_SEQ_Task_LCD), CFG_SEQ_Prio_0);
-		APP_TPRINTF("SetTask\r\n");
-	}
-}
-*/
 /* USER CODE END 0 */
 
 /**
